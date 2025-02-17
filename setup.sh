@@ -151,7 +151,9 @@ install_nvim() {
 
 install_lazyvim_distro() {
   log_message "Installing the lazyvim distro..."
-  # mv ~/.config/nvim{,.bak}
+  if [ -d "$HOME/.config/nvim" ]; then
+    mv ~/.config/nvim{,.bak}
+  fi
   git clone https://github.com/LazyVim/starter ~/.config/nvim
   rm -rf ~/.config/nvim/.git
   log_message "Lazyvim successfully installed."

@@ -107,6 +107,14 @@ install_oh_my_zsh() {
   fi
 }
 
+install_powerlevel10k() {
+  if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
+    log_message "Installing Powerlevel10k..."
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+      "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+  fi
+}
+
 # Install Ruby environment (macOS only)
 install_ruby_env() {
   log_message "Installing Ruby environment..."
@@ -157,6 +165,7 @@ main() {
   install_chezmoi
   install_conda
   install_oh_my_zsh
+  install_powerlevel10k
   install_nvim
   install_lazyvim_distro
 
@@ -180,4 +189,6 @@ main() {
   chezmoi apply --config ~/.config/chezmoi/chezmoi.toml
 
   log_message "Installation complete! Please restart your terminal and run $(chezmoi apply)!"
+  log_message "WARNING: Jump not installed."
+  log_message "WARNING: Check neovim version. Lazyvim config requires v>0.8.0"
 }

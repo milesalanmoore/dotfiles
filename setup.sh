@@ -70,7 +70,6 @@ install_chezmoi() {
   fi
 
   log_message "Initializing chezmoi with your dotfiles..."
-  # Replace with your actual dotfiles repository
   chezmoi init https://github.com/milesalanmoore/dotfiles.git
 }
 
@@ -121,8 +120,6 @@ install_julia() {
   brew install juliaup
   juliaup add release
 }
-
-# Add this function to your setup script
 
 install_nvim() {
   log_message "Setting up Neovim environment..."

@@ -1,0 +1,43 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Miles Moore
+	email = {{ .git.personal.ghemail }} 
+[credential]
+	helper = store
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[alias]
+	br = branch
+	ci = commit
+	co = checkout
+	st = status
+	lg = log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+[core]
+	excludesfile = {{ .system.darwin.home_dir }}.gitignore.global
+	autocrlf = input
+ 	editor = nvim
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[color]
+	ui = true
+[diff]
+	colorMoved = default
+[delta]
+	navigate = true
+	line-numbers = true
+	light = false
+[merge]
+	conflictstyle = diff3
+	tool = vimdiff
+[mergetool]
+	path = nvim
+[init]
+	defaultBranch = main
